@@ -34,7 +34,7 @@ def get_sui_balance(address):
         "params": [address, "0x2::sui::SUI"]
     }
     try:
-        r = requests.post(RPC_URL, json=payload, timeout=20).json()
+        r = requests.post(RPC_URL, json=payload, timeout=3).json()
         balance = r.get("result", {}).get("totalBalance", None)
         if balance is not None:
             return int(balance) / 1_000_000_000
